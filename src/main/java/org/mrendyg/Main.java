@@ -23,7 +23,7 @@ public class Main {
         String bandera = "";
         int destino, horario, asientos;
 
-        while (bandera.equalsIgnoreCase("finish")) {
+        while (!bandera.equalsIgnoreCase("finish")) {
             System.out.println("Ingrese el numero de destino");
             destino = teclado.nextInt();
             System.out.println("Ingrese el horario de vuelo");
@@ -38,6 +38,10 @@ public class Main {
             else {
                 System.out.println("No hay asientos disponibles");
             }
+
+            System.out.println("Desea continuar reservando?. Ingrese finish para " +
+                    "terminar o cualquier valor para seguir");
+            bandera = teclado2.next();
 
         }
 
