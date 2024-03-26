@@ -21,15 +21,56 @@ public class Main {
 
         Scanner teclado2 = new Scanner(System.in);
         String bandera = "";
-        int destino, horario, asientos;
+        int destino = 0, horario, asientos;
 
         while (!bandera.equalsIgnoreCase("finish")) {
-            System.out.println("Ingrese el numero de destino");
-            destino = teclado.nextInt();
-            System.out.println("Ingrese el horario de vuelo");
-            horario = teclado.nextInt();
+            do {
+                do {
+                    System.out.println("Ingrese el número de destino:");
+                    while (!teclado.hasNextInt()) {
+                        System.out.println("------------------------------------");
+                        System.out.println("Por favor, ingrese un número válido.");
+                        System.out.println("------------------------------------");
+                        teclado.next(); // Descartar la entrada no válida
+                    }
+                    destino = teclado.nextInt();
+                    if (destino < 0 || destino > 5) {
+                        System.out.println("------------------------------------------------------------");
+                        System.out.println("Por favor, ingrese un número válido (entre 0 y 5 inclusive).");
+                        System.out.println("------------------------------------------------------------");
+                    }
+                } while (destino < 0 || destino > 5);
+            } while (destino > 5);
+
+
+            do {
+                do {
+                    System.out.println("Ingrese el horario de vuelo");
+                    while (!teclado.hasNextInt()) {
+                        System.out.println("-----------------------------------");
+                        System.out.println("Por favor, ingrese un numero valido.(entre 0 y 2 inclusive).");
+                        System.out.println("-----------------------------------");
+                        teclado.next();
+                    }
+                    horario = teclado.nextInt();
+                    if (horario < 0 || horario > 2) {
+                        System.out.println("-------------------------");
+                        System.out.println("Ingresa un numero valido. (entre 0 y 2 inclusive).");
+                        System.out.println("-------------------------");
+                    }
+                } while (horario <0 || horario > 2);
+            } while (horario > 2);
+
+
             System.out.println("Ingrese la cantidad de asientos");
+            while (!teclado.hasNextInt()) {
+                System.out.println("-----------------------------------");
+                System.out.println("Por favor, ingrese un numero valido.");
+                System.out.println("-----------------------------------");
+                teclado.next();
+            }
             asientos = teclado.nextInt();
+
 
             if (vuelos[destino][horario] >= asientos){
                 System.out.println("Su reserva fue realizada con exito");
@@ -39,11 +80,13 @@ public class Main {
                 System.out.println("No hay asientos disponibles");
             }
 
-            System.out.println("Desea continuar reservando?. Ingrese finish para " +
+            System.out.println("Desea continuar reservando?. Ingrese \"finish\" para " +
                     "terminar o cualquier valor para seguir");
             bandera = teclado2.next();
 
         }
 
     }
+
+
 }
