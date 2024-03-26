@@ -15,6 +15,13 @@ public class Main {
         for (int f=0; f<6; f++){
             for (int c=0; c<3; c++){
                 System.out.println("Ingrese la cantidad de asientos para el destino: " + f + " horario: " + c);
+                while (!teclado.hasNextInt()) {
+                    System.out.println("------------------------------------");
+                    System.out.println("Por favor, ingrese un número válido.");
+                    System.out.println("------------------------------------");
+                    teclado.next();
+                }
+
                 vuelos[f][c] = teclado.nextInt();
             }
         }
@@ -47,16 +54,16 @@ public class Main {
                 do {
                     System.out.println("Ingrese el horario de vuelo");
                     while (!teclado.hasNextInt()) {
-                        System.out.println("-----------------------------------");
+                        System.out.println("------------------------------------------------------------");
                         System.out.println("Por favor, ingrese un numero valido.(entre 0 y 2 inclusive).");
-                        System.out.println("-----------------------------------");
+                        System.out.println("------------------------------------------------------------");
                         teclado.next();
                     }
                     horario = teclado.nextInt();
                     if (horario < 0 || horario > 2) {
-                        System.out.println("-------------------------");
+                        System.out.println("---------------------------------------------------");
                         System.out.println("Ingresa un numero valido. (entre 0 y 2 inclusive).");
-                        System.out.println("-------------------------");
+                        System.out.println("---------------------------------------------------");
                     }
                 } while (horario <0 || horario > 2);
             } while (horario > 2);
